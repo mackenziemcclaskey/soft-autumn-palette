@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soft Autumn Color Picker</title>
+  <style>
+    /* Basic styling for the app */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #video {
+      width: 100%;
+      max-width: 600px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Soft Autumn Color Picker</h1>
+  <video id="video" autoplay></video>
+  <canvas id="canvas" style="display:none;"></canvas>
+  <div id="result">Select a color from the camera feed</div>
+  
+  <script src="app.js"></script>
+</body>
+</html>
