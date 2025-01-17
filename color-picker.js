@@ -19,6 +19,16 @@ async function startCamera() {
     result.textContent = "Unable to access the rear camera. Please check your browser settings.";
   }
 }
+function addExamples() {
+    const colorPaletteDiv = document.getElementById('examples');
+    softAutumnPalette.forEach(color => {
+      const colorBox = document.createElement('div');
+      colorBox.classList.add('color-box');
+      colorBox.style.backgroundColor = color;
+      colorBox.innerHTML = `<span>${color}</span>`;
+      colorPaletteDiv.appendChild(colorBox);
+    });
+}
 
 function detectColor() {
   const canvas = document.createElement('canvas');
@@ -66,3 +76,4 @@ function getTextColor(r, g, b) {
 
 document.getElementById('detectButton').addEventListener('click', detectColor);
 startCamera();
+addExamples();
