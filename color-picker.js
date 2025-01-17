@@ -34,15 +34,41 @@ async function startCamera() {
   }
 }
 
-function sortByHue(a, b) {
-    const [rA, gA, bA] = hexToRgb(a);
-    const [rB, gB, bB] = hexToRgb(b);
-  
-    const luminanceA = 0.299 * rA + 0.587 * gA + 0.114 * bA;
-    const luminanceB = 0.299 * rB + 0.587 * gB + 0.114 * bB;
-  
-    return luminanceA - luminanceB; // Sort in ascending order
+function rgbToHsl(r, g, b) {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+
+  if (max === min) {
+    h = s = 0; // achromatic
+  } else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+    h /= 6;
+  }
+  return [h * 360, s, l];
 }
+
+function sortByHue(a, b) {
+  const [rA, gA, bA] = hexToRgb(a);
+  const [rB, gB, bB] = hexToRgb(b);
+
+  const [hA] = rgbToHsl(rA, gA, bA);
+  const [hB] = rgbToHsl(rB, gB, bB);
+
+  return hA - hB; // Sort by hue in ascending order
+};
+
+
 function addExamples() {
     const colorPaletteDiv = document.getElementById('colorPalette');
     softAutumnPalette.sort(sortByHue).forEach(color => {
