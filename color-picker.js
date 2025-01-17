@@ -33,9 +33,19 @@ async function startCamera() {
     }
   }
 }
+
+function sortByHue(a, b) {
+    const [rA, gA, bA] = hexToRgb(a);
+    const [rB, gB, bB] = hexToRgb(b);
+  
+    const luminanceA = 0.299 * rA + 0.587 * gA + 0.114 * bA;
+    const luminanceB = 0.299 * rB + 0.587 * gB + 0.114 * bB;
+  
+    return luminanceA - luminanceB; // Sort in ascending order
+}
 function addExamples() {
     const colorPaletteDiv = document.getElementById('colorPalette');
-    softAutumnPalette.sort().forEach(color => {
+    softAutumnPalette.sort(sortByHue).forEach(color => {
       const colorBox = document.createElement('div');
       colorBox.classList.add('color-box');
       colorBox.style.backgroundColor = color;
