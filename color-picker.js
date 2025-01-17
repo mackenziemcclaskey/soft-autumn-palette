@@ -2,7 +2,13 @@ const softAutumnPalette = [
   "#6B4E3D", "#8A7B68", "#A49381", "#D7B69E", "#E5C7B0",
   "#BBA084", "#9C7C59", "#C8A388", "#D5B596", "#DED1BE",
   "#5B7C74", "#839F8D", "#A9C2B1", "#CDDCD0", "#F0E8D6",
-  "#746C75", "#8C819A", "#B1A4C3", "#D9D0E5"
+  "#746C75", "#8C819A", "#B1A4C3", "#D9D0E5", "#C99F69", 
+  "#A9B290", "#3E6B58", "#C2B49A", "#9A8F67", "#AD8F66",
+  "#A68C5D", "#7A5E3D", "#8E8F84", "#A2956F", "#9A8F78", 
+  "#7D4B3B", "#4F6F50", "#6D5C44", "#BB9C72", "#A77D5C", 
+  "#D0A67A", "#B3946F", "#4A3F3A", "#A78F80", "#D1B89E", 
+  "#B0A385", "#4C5660", "#D0C8A1", "#A0A380", "#7C7A64", 
+  "#E8D9A2", "#C8C1B5", "#B38A7E", "#C3B299", "#9B8765" 
 ];
 
 const threshold = 50; // Adjust this value to control the match sensitivity
