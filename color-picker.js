@@ -15,8 +15,16 @@ async function startCamera() {
     video.srcObject = stream;
     video.play();
   } catch (err) {
-    console.error("Error accessing camera: ", err);
-    result.textContent = "Unable to access the rear camera. Please check your browser settings.";
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: true
+      });
+      video.srcObject = stream;
+      video.play();
+    } catch (err) {
+      console.error("Error accessing camera: ", err);
+      result.textContent = "Unable to access the camera. Please check your browser settings.";
+    }
   }
 }
 function addExamples() {
