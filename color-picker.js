@@ -35,7 +35,7 @@ async function startCamera() {
 }
 function addExamples() {
     const colorPaletteDiv = document.getElementById('colorPalette');
-    softAutumnPalette.forEach(color => {
+    softAutumnPalette.sort().forEach(color => {
       const colorBox = document.createElement('div');
       colorBox.classList.add('color-box');
       colorBox.style.backgroundColor = color;
